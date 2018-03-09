@@ -1,5 +1,7 @@
 package uk.co.nstech.sleuth.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.ParameterizedTypeReference;
@@ -10,6 +12,8 @@ import org.springframework.web.client.RestTemplate;
 
 @RestController
 public class ZipkinController {
+
+  private static final Logger log = LoggerFactory.getLogger(ScheduledTasks.class);
 
   @Value("${spring.application.name}")
   private String applicationName;
@@ -22,6 +26,7 @@ public class ZipkinController {
 
   @GetMapping("/zipkin")
   public String zipkin() {
+    log.debug(">>> Call to zipkin");
     String response = applicationName;
     if (url != null && url.length() > 0) {
       String theUrl = url;

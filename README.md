@@ -46,6 +46,11 @@ upstream -> middle -> downstream
 2. Under "Management" create an Index Pattern. `logstash-*` and `@timestamp`
 3. Choose "Discover" to view the log entries
 
+NB. If you want to filter on a particular trace you can use something similar to this
+```
+message: ">>> Call*" AND traceId: "7f3a243d1b53720f"
+```
+
 ## View the tracing in Zipkin
 1. Open Zipkin http://localhost:9411/
 2. Choose "Find Traces"
